@@ -22,19 +22,18 @@ class Tank
     Tank(int FL, int FR, int BL, int BR);
     void setSpeed(int speed);
     void forward();
-    void forwardFor(unsigned long delay);
+    void forwardFor(unsigned long ms);
     void backward();
-    void backwardFor(unsigned long delay);
+    void backwardFor(unsigned long ms);
     void spinLeft();
-    void spinLeftFor(unsigned long delay);
+    void spinLeftFor(unsigned long ms);
     void spinRight();
-    void spinRightFor(unsigned long delay);
-    void turnLeft();
-    void turnLeftFor(unsigned long delay);
-    void turnRight();
-    void turnRightFor(unsigned long delay);
+    void spinRightFor(unsigned long ms);
+    void turnLeft(unsigned long ms);
+    void turnRight(unsigned long ms);
     void stop();
   private:
+    int _speed;
     AF_DCMotor _motorFL;
     AF_DCMotor _motorFR;
     AF_DCMotor _motorBL;

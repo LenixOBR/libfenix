@@ -26,16 +26,11 @@ class Trikey
     void forwardFor(unsigned long delay);
     void backward();
     void backwardFor(unsigned long delay);
-    void spinLeft();
-    void spinLeftFor(unsigned long delay);
-    void spinRight();
-    void spinRightFor(unsigned long delay);
-    void turnLeft();
-    void turnLeftFor(unsigned long delay);
-    void turnRight();
-    void turnRightFor(unsigned long delay);
+    void turnLeft(unsigned long delay);
+    void turnRight(unsigned long delay);
     void stop();
   private:
+    int _speed;
     AF_DCMotor _motorL;
     AF_DCMotor _motorR;
 };
