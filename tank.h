@@ -14,17 +14,25 @@
 #include "Arduino.h"
 #include "AFMotor.h"
 
+/*FL=Front Left, FR=Front Right, BL=Back Left, BR=Back Right*/
+
 class Tank
 {
   public:
     Tank(int FL, int FR, int BL, int BR);
-    void setSpeed(int speed)
-    void forwards(int ms);
-    void backwards(int ms);
-    void spinleft(int ms);
-    void spinright(int ms);
-    void turnleft(int ms);
-    void turnright(int ms);
+    void setSpeed(int speed);
+    void forward();
+    void forwardFor(unsigned long delay);
+    void backward();
+    void backwardFor(unsigned long delay);
+    void spinLeft();
+    void spinLeftFor(unsigned long delay);
+    void spinRight();
+    void spinRightFor(unsigned long delay);
+    void turnLeft();
+    void turnLeftFor(unsigned long delay);
+    void turnRight();
+    void turnRightFor(unsigned long delay);
   private:
     int _FL;
     int _FR;

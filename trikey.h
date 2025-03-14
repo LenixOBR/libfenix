@@ -20,12 +20,18 @@ class Trikey
   public:
     Trikey(int L, int R);
     void setSpeed(int speed)
-    void forwards(int ms);
-    void backwards(int ms);
-    void spinleft(int ms);
-    void spinright(int ms);
-    void turnleft(int ms);
-    void turnright(int ms);
+    void forward();
+    void forwardFor(unsigned long delay);
+    void backward();
+    void backwardFor(unsigned long delay);
+    void spinLeft();
+    void spinLeftFor(unsigned long delay);
+    void spinRight();
+    void spinRightFor(unsigned long delay);
+    void turnLeft();
+    void turnLeftFor(unsigned long delay);
+    void turnRight();
+    void turnRightFor(unsigned long delay);
   private:
     int _L;
     int _R;
