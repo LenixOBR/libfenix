@@ -15,21 +15,24 @@
 #include "Arduino.h"
 #include "AFMotor.h"
 
+/*L=Left, R=Right*/
+
 class Trikey
 {
   public:
     Trikey(int L, int R);
     void setSpeed(int speed)
-    void forwards(int ms);
-    void backwards(int ms);
-    void spinleft(int ms);
-    void spinright(int ms);
-    void turnleft(int ms);
-    void turnright(int ms);
+    void forward();
+    void forwardFor(unsigned long delay);
+    void backward();
+    void backwardFor(unsigned long delay);
+    void turnLeft(unsigned long delay);
+    void turnRight(unsigned long delay);
+    void stop();
   private:
-    int _L;
-    int _R;
     int _speed;
+    AF_DCMotor _motorL;
+    AF_DCMotor _motorR;
 };
 
 #endif
