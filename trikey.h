@@ -34,10 +34,10 @@ class Trikey
     void turnLeftFor(unsigned long delay);
     void turnRight();
     void turnRightFor(unsigned long delay);
+    void stop();
   private:
-    int _L;
-    int _R;
-    int _speed;
+    AF_DCMotor _motorL;
+    AF_DCMotor _motorR;
 };
 
 #endif

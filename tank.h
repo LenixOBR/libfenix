@@ -33,12 +33,12 @@ class Tank
     void turnLeftFor(unsigned long delay);
     void turnRight();
     void turnRightFor(unsigned long delay);
+    void stop();
   private:
-    int _FL;
-    int _FR;
-    int _BL;
-    int _BR;
-    int _speed;
+    AF_DCMotor _motorFL;
+    AF_DCMotor _motorFR;
+    AF_DCMotor _motorBL;
+    AF_DCMotor _motorBR;
 };
 
 #endif
