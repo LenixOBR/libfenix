@@ -8,8 +8,8 @@
     VS Code is complaining about arduino.h, let's hope it's nothing.
     https://docs.arduino.cc/learn/contributions/arduino-creating-library-guide/ <- guide being used
 */
-#ifndef Tank_h
-#define Tank_h
+#ifndef tank_h
+#define tank_h
 
 #include "Arduino.h"
 #include "AFMotor.h"

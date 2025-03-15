@@ -102,6 +102,21 @@ void Tank::spinRight()
     _motorBR.run(BACKWARD);
 }
 
+void Tank::spinRightFor(unsigned long ms)
+{
+    _motorFL.run(FORWARD);
+    _motorBL.run(FORWARD);
+    _motorFR.run(BACKWARD);
+    _motorBR.run(BACKWARD);
+
+    delay(ms); // Espera o tempo especificado
+
+    _motorFL.run(RELEASE); // Para os motores
+    _motorFR.run(RELEASE);
+    _motorBL.run(RELEASE);
+    _motorBR.run(RELEASE);
+}
+
 void Tank::turnLeft(unsigned long ms)
 {
     _motorFL.setSpeed(_speed / 2); // velocidade reduzida
