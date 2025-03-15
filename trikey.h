@@ -4,8 +4,8 @@
   Released into the public domain.
 */
 
-#ifndef Trikey_h
-#define Trikey_h
+#ifndef trikey_h
+#define trikey_h
 
 /*
     VS Code is complaining about arduino.h, let's hope it's nothing.
@@ -21,13 +21,17 @@ class Trikey
 {
   public:
     Trikey(int L, int R);
-    void setSpeed(int speed)
+    void setSpeed(int speed);
     void forward();
-    void forwardFor(unsigned long delay);
+    void forwardFor(unsigned long ms);
     void backward();
-    void backwardFor(unsigned long delay);
-    void turnLeft(unsigned long delay);
-    void turnRight(unsigned long delay);
+    void backwardFor(unsigned long ms);
+    void spinLeft();
+    void spinLeftFor(unsigned long ms);
+    void spinRight();
+    void spinRightFor(unsigned long ms);
+    void turnLeft(unsigned long ms);
+    void turnRight(unsigned long ms);
     void stop();
   private:
     int _speed;
