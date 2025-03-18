@@ -117,52 +117,37 @@ void Tank::spinRightFor(unsigned long ms)
     _motorBR.run(RELEASE);
 }
 
-void Tank::turnLeft(unsigned long ms)
+void Tank::turnLeftFor(unsigned long ms)
 {
-    _motorFL.setSpeed(_speed / 2); // velocidade reduzida
-    _motorBL.setSpeed(_speed / 2);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
-
-    _motorFL.run(FORWARD);
     _motorFR.run(FORWARD);
-    _motorBL.run(FORWARD);
     _motorBR.run(FORWARD);
 
     delay(ms);
 
-    _motorFL.run(RELEASE); // Para os motores
-    _motorFR.run(RELEASE);
-    _motorBL.run(RELEASE);
+    _motorFR.run(RELEASE); // Para os motores
     _motorBR.run(RELEASE);
 
-    _motorFL.setSpeed(_speed); // Reseta a velocidade
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
 }
 
-void Tank::turnRight(unsigned long ms)
+void Tank::turnLeft()
 {
-    _motorFL.setSpeed(_speed); // velocidade reduzida
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed / 2);
-    _motorBR.setSpeed(_speed / 2);
-
-    _motorFL.run(FORWARD);
     _motorFR.run(FORWARD);
-    _motorBL.run(FORWARD);
     _motorBR.run(FORWARD);
+}
+
+void Tank::turnRightFor(unsigned long ms)
+{
+    _motorFL.run(FORWARD);
+    _motorBL.run(FORWARD);
 
     delay(ms);
 
     _motorFL.run(RELEASE); // Para os motores
-    _motorFR.run(RELEASE);
     _motorBL.run(RELEASE);
-    _motorBR.run(RELEASE);
+}
 
-    _motorFL.setSpeed(_speed); // Reseta a velocidade
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
+void Tank::turnRight()
+{
+    _motorFL.run(FORWARD);
+    _motorBL.run(FORWARD);
 }

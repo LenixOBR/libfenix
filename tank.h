@@ -29,8 +29,10 @@ class Tank
     void spinLeftFor(unsigned long ms);
     void spinRight();
     void spinRightFor(unsigned long ms);
-    void turnLeft(unsigned long ms);
-    void turnRight(unsigned long ms);
+    void turnLeftFor(unsigned long ms);
+    void turnLeft();
+    void turnRightFor(unsigned long ms);
+    void turnRight();
     void stop();
   private:
     int _speed;

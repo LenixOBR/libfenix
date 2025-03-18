@@ -90,36 +90,33 @@ void Trikey::spinRightFor(unsigned long ms)
     _motorR.run(RELEASE);
 }
 
-void Trikey::turnLeft(unsigned long ms)
+void Trikey::turnLeftFor(unsigned long ms)
 {
-    _motorL.setSpeed(_speed / 2); // velocidade reduzida
-    _motorR.setSpeed(_speed);
 
-    _motorL.run(FORWARD);
     _motorR.run(FORWARD);
 
     delay(ms);
 
-    _motorL.run(RELEASE); // Para os motores
     _motorR.run(RELEASE);
 
-    _motorL.setSpeed(_speed); // Reseta a velocidade
-    _motorR.setSpeed(_speed);
 }
 
-void Trikey::turnRight(unsigned long ms)
+void Trikey::turnLeft()
 {
-    _motorL.setSpeed(_speed); // velocidade reduzida
-    _motorR.setSpeed(_speed / 2);
+    _motorR.run(FORWARD);
+}
+
+void Trikey::turnRightFor(unsigned long ms)
+{
 
     _motorL.run(FORWARD);
-    _motorR.run(FORWARD);
 
     delay(ms);
 
     _motorL.run(RELEASE); // Para os motores
-    _motorR.run(RELEASE);
+}
 
-    _motorL.setSpeed(_speed); // Reseta a velocidade
-    _motorR.setSpeed(_speed);
+void Trikey::turnRight()
+{
+    _motorL.run(FORWARD);
 }
