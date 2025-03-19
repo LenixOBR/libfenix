@@ -35,6 +35,7 @@ class Trikey
     void turnRightFor(unsigned long ms);
     void turnRight();
     void stop();
+    void coast();
   private:
     int _speed;
     AF_DCMotor _motorL;

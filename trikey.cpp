@@ -8,10 +8,16 @@ Trikey::Trikey(int L, int R)
     _speed = 255;  // Default speed to max
 }
 
+void Trikey::coast()
+{
+    _motorL.run(RELEASE);
+    _motorR.run(RELEASE);
+}
+
 void Trikey::stop() 
 {
-    _motorL.run(RELEASE); // Para os motores
-    _motorR.run(RELEASE);
+    _motorL.run(BRAKE); // Para os motores
+    _motorR.run(BRAKE);
 }
 
 void Trikey::setSpeed(int speed)
@@ -93,6 +99,7 @@ void Trikey::spinRightFor(unsigned long ms)
 void Trikey::turnLeftFor(unsigned long ms)
 {
 
+    _motorL.run(BRAKE); // Para o motor
     _motorR.run(FORWARD);
 
     delay(ms);
@@ -103,12 +110,13 @@ void Trikey::turnLeftFor(unsigned long ms)
 
 void Trikey::turnLeft()
 {
+    _motorL.run(BRAKE); // Para o motor
     _motorR.run(FORWARD);
 }
 
 void Trikey::turnRightFor(unsigned long ms)
 {
-
+    _motorR.run(BRAKE)
     _motorL.run(FORWARD);
 
     delay(ms);
@@ -118,5 +126,6 @@ void Trikey::turnRightFor(unsigned long ms)
 
 void Trikey::turnRight()
 {
+    _motorR.run(BRAKE)
     _motorL.run(FORWARD);
 }

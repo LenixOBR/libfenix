@@ -8,12 +8,20 @@ Tank::Tank(int FL, int FR, int BL, int BR)
     _speed = 255;  // Default speed to max
 }
 
-void Tank::stop() 
+void Tank::coast() 
 {
     _motorFL.run(RELEASE); // Para os motores
     _motorFR.run(RELEASE);
     _motorBL.run(RELEASE);
     _motorBR.run(RELEASE);
+}
+
+void Tank::stop() 
+{
+    _motorFL.run(BRAKE); // Para os motores
+    _motorFR.run(BRAKE);
+    _motorBL.run(BRAKE);
+    _motorBR.run(BRAKE);
 }
 
 void Tank::setSpeed(int speed)
@@ -119,6 +127,8 @@ void Tank::spinRightFor(unsigned long ms)
 
 void Tank::turnLeftFor(unsigned long ms)
 {
+    _motorFL.run(BRAKE);
+    _motorBL.run(BRAKE);
     _motorFR.run(FORWARD);
     _motorBR.run(FORWARD);
 
@@ -131,12 +141,17 @@ void Tank::turnLeftFor(unsigned long ms)
 
 void Tank::turnLeft()
 {
+    _motorFL.run(BRAKE);
+    _motorBL.run(BRAKE);
     _motorFR.run(FORWARD);
     _motorBR.run(FORWARD);
 }
 
 void Tank::turnRightFor(unsigned long ms)
 {
+    
+    _motorFR.run(BRAKE);
+    _motorBR.run(BRAKE);
     _motorFL.run(FORWARD);
     _motorBL.run(FORWARD);
 
@@ -148,6 +163,8 @@ void Tank::turnRightFor(unsigned long ms)
 
 void Tank::turnRight()
 {
+    _motorFR.run(BRAKE);
+    _motorBR.run(BRAKE);
     _motorFL.run(FORWARD);
     _motorBL.run(FORWARD);
 }
