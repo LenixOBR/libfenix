@@ -129,3 +129,13 @@ void Trikey::turnRight()
     _motorR.run(BRAKE)
     _motorL.run(FORWARD);
 }
+
+void Trikey::move(int speedL, int speedR)
+{
+    _motorL.setSpeed(abs(speedL));
+    _motorR.setSpeed(abs(speedR));
+
+    _motorL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorR.run(speedR >= 0 ? FORWARD : BACKWARD);
+}
+

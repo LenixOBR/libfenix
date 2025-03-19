@@ -34,6 +34,7 @@ class Trikey
     void turnLeft();
     void turnRightFor(unsigned long ms);
     void turnRight();
+    void move(int speedL, int speedR);
     void stop();
     void coast();
   private:

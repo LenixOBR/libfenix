@@ -168,3 +168,17 @@ void Tank::turnRight()
     _motorFL.run(FORWARD);
     _motorBL.run(FORWARD);
 }
+
+// In Tank.cpp
+void Tank::move(int speedL, int speedR)
+{
+    _motorFL.setSpeed(abs(speedL));
+    _motorFR.setSpeed(abs(speedR));
+    _motorBL.setSpeed(abs(speedL));
+    _motorBR.setSpeed(abs(speedR));
+
+    _motorFL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorFR.run(speedR >= 0 ? FORWARD : BACKWARD);
+    _motorBL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorBR.run(speedR >= 0 ? FORWARD : BACKWARD);
+}

@@ -35,6 +35,8 @@ class Tank
     void turnRight();
     void stop();
     void coast();
+    void move(int speedL, int speedR);
+
   private:
     int _speed;
     AF_DCMotor _motorFL;
