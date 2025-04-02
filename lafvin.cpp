@@ -30,16 +30,16 @@ void forwardFor(unsigned long ms){
 
 void backward(){
     digitalWrite(2,LOW);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,LOW);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 }
 
 void backwardFor(unsigned long ms){
     digitalWrite(2,LOW);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,LOW);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 
     delay(ms);
 
@@ -49,16 +49,16 @@ void backwardFor(unsigned long ms){
 
 void spinLeft(){
     digitalWrite(2,HIGH);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,LOW);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 }
 
 void spinLeftFor(unsigned long ms){
     digitalWrite(2,HIGH);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,LOW);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 
     delay(ms);
 
@@ -68,16 +68,16 @@ void spinLeftFor(unsigned long ms){
 
 void spinRight(){
     digitalWrite(2,LOW);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,HIGH);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 }
 
 void spinRightFor(unsigned long ms){
     digitalWrite(2,LOW);
-    analogWrite(5,50);
+    analogWrite(5,_speed);
     digitalWrite(4,HIGH);
-    analogWrite(6,50);
+    analogWrite(6,_speed);
 
     delay(ms);
 
