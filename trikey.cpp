@@ -8,10 +8,16 @@ Trikey::Trikey(int L, int R)
     _speed = 255;  // Default speed to max
 }
 
+void Trikey::coast()
+{
+    _motorL.run(RELEASE);
+    _motorR.run(RELEASE);
+}
+
 void Trikey::stop() 
 {
-    _motorL.run(RELEASE); // Para os motores
-    _motorR.run(RELEASE);
+    _motorL.run(BRAKE); // Para os motores
+    _motorR.run(BRAKE);
 }
 
 void Trikey::setSpeed(int speed)
@@ -90,36 +96,46 @@ void Trikey::spinRightFor(unsigned long ms)
     _motorR.run(RELEASE);
 }
 
-void Trikey::turnLeft(unsigned long ms)
+void Trikey::turnLeftFor(unsigned long ms)
 {
-    _motorL.setSpeed(_speed / 2); // velocidade reduzida
-    _motorR.setSpeed(_speed);
 
-    _motorL.run(FORWARD);
+    _motorL.run(BRAKE); // Para o motor
     _motorR.run(FORWARD);
 
     delay(ms);
 
-    _motorL.run(RELEASE); // Para os motores
     _motorR.run(RELEASE);
 
-    _motorL.setSpeed(_speed); // Reseta a velocidade
-    _motorR.setSpeed(_speed);
 }
 
-void Trikey::turnRight(unsigned long ms)
+void Trikey::turnLeft()
 {
-    _motorL.setSpeed(_speed); // velocidade reduzida
-    _motorR.setSpeed(_speed / 2);
-
-    _motorL.run(FORWARD);
+    _motorL.run(BRAKE); // Para o motor
     _motorR.run(FORWARD);
+}
+
+void Trikey::turnRightFor(unsigned long ms)
+{
+    _motorR.run(BRAKE)
+    _motorL.run(FORWARD);
 
     delay(ms);
 
     _motorL.run(RELEASE); // Para os motores
-    _motorR.run(RELEASE);
-
-    _motorL.setSpeed(_speed); // Reseta a velocidade
-    _motorR.setSpeed(_speed);
 }
+
+void Trikey::turnRight()
+{
+    _motorR.run(BRAKE)
+    _motorL.run(FORWARD);
+}
+
+void Trikey::move(int speedL, int speedR)
+{
+    _motorL.setSpeed(abs(speedL));
+    _motorR.setSpeed(abs(speedR));
+
+    _motorL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorR.run(speedR >= 0 ? FORWARD : BACKWARD);
+}
+

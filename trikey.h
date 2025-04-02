@@ -30,9 +30,13 @@ class Trikey
     void spinLeftFor(unsigned long ms);
     void spinRight();
     void spinRightFor(unsigned long ms);
-    void turnLeft(unsigned long ms);
-    void turnRight(unsigned long ms);
+    void turnLeftFor(unsigned long ms);
+    void turnLeft();
+    void turnRightFor(unsigned long ms);
+    void turnRight();
+    void move(int speedL, int speedR);
     void stop();
+    void coast();
   private:
     int _speed;
     AF_DCMotor _motorL;

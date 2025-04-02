@@ -8,12 +8,20 @@ Tank::Tank(int FL, int FR, int BL, int BR)
     _speed = 255;  // Default speed to max
 }
 
-void Tank::stop() 
+void Tank::coast() 
 {
     _motorFL.run(RELEASE); // Para os motores
     _motorFR.run(RELEASE);
     _motorBL.run(RELEASE);
     _motorBR.run(RELEASE);
+}
+
+void Tank::stop() 
+{
+    _motorFL.run(BRAKE); // Para os motores
+    _motorFR.run(BRAKE);
+    _motorBL.run(BRAKE);
+    _motorBR.run(BRAKE);
 }
 
 void Tank::setSpeed(int speed)
@@ -117,52 +125,60 @@ void Tank::spinRightFor(unsigned long ms)
     _motorBR.run(RELEASE);
 }
 
-void Tank::turnLeft(unsigned long ms)
+void Tank::turnLeftFor(unsigned long ms)
 {
-    _motorFL.setSpeed(_speed / 2); // velocidade reduzida
-    _motorBL.setSpeed(_speed / 2);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
-
-    _motorFL.run(FORWARD);
+    _motorFL.run(BRAKE);
+    _motorBL.run(BRAKE);
     _motorFR.run(FORWARD);
-    _motorBL.run(FORWARD);
     _motorBR.run(FORWARD);
 
     delay(ms);
 
-    _motorFL.run(RELEASE); // Para os motores
-    _motorFR.run(RELEASE);
-    _motorBL.run(RELEASE);
+    _motorFR.run(RELEASE); // Para os motores
     _motorBR.run(RELEASE);
 
-    _motorFL.setSpeed(_speed); // Reseta a velocidade
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
 }
 
-void Tank::turnRight(unsigned long ms)
+void Tank::turnLeft()
 {
-    _motorFL.setSpeed(_speed); // velocidade reduzida
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed / 2);
-    _motorBR.setSpeed(_speed / 2);
-
-    _motorFL.run(FORWARD);
+    _motorFL.run(BRAKE);
+    _motorBL.run(BRAKE);
     _motorFR.run(FORWARD);
-    _motorBL.run(FORWARD);
     _motorBR.run(FORWARD);
+}
+
+void Tank::turnRightFor(unsigned long ms)
+{
+    
+    _motorFR.run(BRAKE);
+    _motorBR.run(BRAKE);
+    _motorFL.run(FORWARD);
+    _motorBL.run(FORWARD);
 
     delay(ms);
 
     _motorFL.run(RELEASE); // Para os motores
-    _motorFR.run(RELEASE);
     _motorBL.run(RELEASE);
-    _motorBR.run(RELEASE);
+}
 
-    _motorFL.setSpeed(_speed); // Reseta a velocidade
-    _motorBL.setSpeed(_speed);
-    _motorFR.setSpeed(_speed);
-    _motorBR.setSpeed(_speed);
+void Tank::turnRight()
+{
+    _motorFR.run(BRAKE);
+    _motorBR.run(BRAKE);
+    _motorFL.run(FORWARD);
+    _motorBL.run(FORWARD);
+}
+
+// In Tank.cpp
+void Tank::move(int speedL, int speedR)
+{
+    _motorFL.setSpeed(abs(speedL));
+    _motorFR.setSpeed(abs(speedR));
+    _motorBL.setSpeed(abs(speedL));
+    _motorBR.setSpeed(abs(speedR));
+
+    _motorFL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorFR.run(speedR >= 0 ? FORWARD : BACKWARD);
+    _motorBL.run(speedL >= 0 ? FORWARD : BACKWARD);
+    _motorBR.run(speedR >= 0 ? FORWARD : BACKWARD);
 }
