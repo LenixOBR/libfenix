@@ -36,7 +36,7 @@ class Lafvin
     void moveRight();
     void stop();
     void preciseMove(int L, int R);
-    void preciseMoveFor(int L, int R, int ms);
+    void preciseMoveFor(int L, int R, unsigned long ms);
   private:
     int _speed;
 

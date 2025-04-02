@@ -122,3 +122,21 @@ void stop(){
     analogwrite(6,0);
 }
 
+void preciseMove(int L, int R){
+    digitalWrite(2, L > 0) ? HIGH : LOW);
+    analogWrite(5, abs(L));
+    digitalWrite(4, R > 0) ? HIGH : LOW);
+    analogWrite(6, abs(R));
+}
+
+void preciseMoveFor(int L, int R, unsigned long ms){
+    digitalWrite(2, L > 0) ? HIGH : LOW);
+    analogWrite(5, abs(L));
+    digitalWrite(4, R > 0) ? HIGH : LOW);
+    analogWrite(6, abs(R));
+
+    delay(ms);
+
+    analogWrite(5,0);
+    analogwrite(6,0);
+}
